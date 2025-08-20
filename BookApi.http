@@ -1,6 +1,13 @@
-@BookApi_HostAddress = http://localhost:5110
+@rootURL = http://localhost:5110
 
-GET {{BookApi_HostAddress}}/weatherforecast/
+GET {{rootURL}}/weatherforecast/
 Accept: application/json
 
 ###
+GET {{rootURL}}/api/books
+Accept: application/json
+
+###
+GET {{rootURL}}/api/books/2
+Accept: application/json
+
