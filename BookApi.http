@@ -11,3 +11,12 @@ Accept: application/json
 GET {{rootURL}}/api/books/2
 Accept: application/json
 
+###
+POST {{rootURL}}/api/books
+Content-Type: application/json
+{
+  "id":7,
+  "title": "New Book",
+  "author": "John Doe",
+  "publishedDate": "2023-10-01T00:00:00Z"
+}

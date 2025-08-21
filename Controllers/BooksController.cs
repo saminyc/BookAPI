@@ -23,8 +23,10 @@ namespace BookApi.Controllers
             return Ok(books);
         }
 
+        // GET api/books/id
+
         [HttpGet("{id}")]
-        public ActionResult<List<Book>> GetBookById(int id)
+        public ActionResult<Book> GetBookById(int id)
         {
             var book = books.FirstOrDefault(x => x.Id == id);
             if (book==null)
@@ -32,6 +34,23 @@ namespace BookApi.Controllers
                 return NotFound();
             }
             return Ok(book);
+        }
+
+        // POST api/books/id
+        [HttpPost]
+
+        public ActionResult<Book> AddBook(Book newBook)
+        {
+            // Handle null book
+            if (newBook == null)
+            {
+                return BadRequest("Book cannot be null");
+            }
+            else
+            {
+                books.Add(newBook);// Add a new book to the list
+                return CreatedAtAction(nameof(GetBookById), new { id = newBook.Id }, newBook);
+            }
         }
     }
 }
