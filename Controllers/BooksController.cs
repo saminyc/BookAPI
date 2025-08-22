@@ -1,6 +1,7 @@
 ﻿using BookApi.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Immutable;
 
 namespace BookApi.Controllers
 {
@@ -70,6 +71,19 @@ namespace BookApi.Controllers
             findBook.YearPublished = updatedBook.YearPublished;
 
             return NoContent(); // Returns no content status code
+
+        }
+
+        // DELETE api/books/id
+        public IActionResult DeleteBook(int id)
+        {
+            var chosenBook = books.FirstOrDefault(x=>x.Id==id);
+            if (chosenBook == null)
+            {
+                return NotFound(); // If the book is not found, return 404
+            }
+            books.Remove(chosenBook); // Remove the book from the list
+            return NoContent(); // Returns no content status code   
 
         }
     }

@@ -29,3 +29,6 @@ Content-Type: application/json
   "author": "Samin",
   "publishedDate": "2023-10-02T00:00:00Z"
 }
+###
+DELETE {{rootURL}}/api/books/7
+Accept: application/json
