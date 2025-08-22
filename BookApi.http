@@ -20,3 +20,12 @@ Content-Type: application/json
   "author": "John Doe",
   "publishedDate": "2023-10-01T00:00:00Z"
 }
+###
+PUT {{rootURL}}/api/books/7
+Content-Type: application/json
+{
+  "id":7,
+  "title": "New Book",
+  "author": "Samin",
+  "publishedDate": "2023-10-02T00:00:00Z"
+}

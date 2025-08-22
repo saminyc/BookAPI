@@ -52,5 +52,25 @@ namespace BookApi.Controllers
                 return CreatedAtAction(nameof(GetBookById), new { id = newBook.Id }, newBook);
             }
         }
+
+        // PUT api/books/id
+        [HttpPut("{id}")]
+
+        public IActionResult UpdateBook(int id, Book updatedBook)
+        {
+            var findBook = books.FirstOrDefault(x => x.Id == id);// Find the book by id
+            if (findBook == null)
+            {
+                return NotFound();
+            }
+            // Update the book details
+            findBook.Id=updatedBook.Id;
+            findBook.Title = updatedBook.Title;
+            findBook.Author = updatedBook.Author;   
+            findBook.YearPublished = updatedBook.YearPublished;
+
+            return NoContent(); // Returns no content status code
+
+        }
     }
 }
